@@ -153,10 +153,58 @@ Para las 3 instancias se configura también los Security Group para aceptar puer
 
 ### Ejecución local
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+# Terminal 1 — math instance 1
+cd mathservice
+PORT=8081 mvn spring-boot:run
 
+# Terminal 2 — math instance 2
+cd mathservice
+PORT=8082 mvn spring-boot:run
+
+# Terminal 3 — proxy
+cd proxy
+export INSTANCE1_URL=http://localhost:8081
+export INSTANCE2_URL=http://localhost:8082
+mvn spring-boot:run
+
+![alt text](assets/image.png)
+![alt text](assets/image-1.png)
+![alt text](assets/image-2.png)
+
+
+### Jar Generation
+
+cd mathservice && mvn package -DskipTests
+cd ../proxy && mvn package -DskipTests
+
+![alt text](assets/image-3.png)
+
+### AWS SCP
+
+scp -i "mathservice1.pem" mathservice/target/mathservice-0.0.1-SNAPSHOT.jar ec2-user@54.174.163.69:~/mathservice.jar
+scp -i "mathservice2.pem" mathservice/target/mathservice-0.0.1-SNAPSHOT.jar ec2-user@54.162.108.165:~/mathservice.jar
+scp -i "proxy.pem" proxy/target/proxy-0.0.1-SNAPSHOT.jar ec2-user@3.83.167.36:~/proxy.jar
+
+![alt text](assets/image-4.png)
+
+### AWS SSH connection
+
+ssh -i "mathservice1.pem" ec2-user@ec2-54-174-163-69.compute-1.amazonaws.com
+ssh -i "mathservice2.pem" ec2-user@ec2-54-162-108-165.compute-1.amazonaws.com
+ssh -i "proxy.pem" ec2-user@ec2-3-83-167-36.compute-1.amazonaws.com
+
+# Install Java
+sudo yum install java-17-amazon-corretto -y
+
+![alt text](assets/image-5.png)
+
+# Ejecutar jar correctamente
+
+![alt text](assets/image-6.png)
+
+### Espera tiempo con IP de AWS
+
+![alt text](assets/image-7.png)
 
 ## Licencia
 
