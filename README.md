@@ -108,6 +108,25 @@ Salida. El formato de la salida y la respuesta debe ser un JSON con el siguiente
  "output":  "2"
 }
 
+## Desarrollo
+
+### Spring Initializr
+
+Se crean los dos servicios en Spring Initializr, tanto del math service como del proxy, con estos requerimientos:
+
+- Project: Maven
+- Language: Java
+- Spring Boot: 3.5.13 (SNAPSHOT)
+- Group: com.edu.eci.arep
+- Artifact: mathservice/proxy
+- Java: 17
+- Dependencies: Spring Web
+
+![MathService](images/mathservice-initializr.png)
+![Proxy](proxy-initializr.png)
+
+### 
+
 ## Referencias
 
 - https://docs.oracle.com/javase/8/docs/api/
