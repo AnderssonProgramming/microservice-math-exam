@@ -123,9 +123,44 @@ Se crean los dos servicios en Spring Initializr, tanto del math service como del
 - Dependencies: Spring Web
 
 ![MathService](images/mathservice-initializr.png)
-![Proxy](proxy-initializr.png)
+![Proxy](images/proxy-initializr.png)
 
-### 
+### Verificación Servicios
+
+Usando el comando `mvn clean package` se comprueba la correcta configuración de Spring Initializr para los dos servicios.
+
+![mvn-clean-package](images/mvn-clean-package.png)
+
+### Instancias de AWS
+
+Para las 3 instancias se configura también los Security Group para aceptar puertos de SSH, HTTP, HTTPS para poder generar las peticiones correctamente.
+
+#### Math Services
+
+![alt text](images/mathservice1-instance.png)
+![alt text](images/image.png)
+![alt text](images/image-3.png)
+
+![alt text](images/mathservice2-instance.png)
+![alt text](images/image-1.png)
+![alt text](images/image-4.png)
+
+#### Proxy Server
+
+![alt text](images/proxy-instance.png)
+![alt text](images/image-2.png)
+![alt text](images/image-5.png)
+
+### Ejecución local
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+
+## Licencia
+
+Este examen está bajo la licencia MIT [LICENSE](LICENSE).
 
 ## Referencias
 
